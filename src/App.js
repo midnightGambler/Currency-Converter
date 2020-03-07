@@ -1,32 +1,36 @@
 import React from "react";
 import ReactDom from "react-dom";
-import styled, { createGlobalStyle } from "styled-components";
+import { GlobalStyle } from "./styles/GlobalStyles";
+import styled, { ThemeProvider } from "styled-components";
 import { colors } from "./styles/variables";
-import Container from "./components/UI/Container";
+import { Container } from "./components/UI/Container";
+import { Button } from "./components/UI/Button";
+import { Card } from "./components/UI/Card";
+import { Title } from "./components/UI/Title";
+import { Dropdown } from "./components/UI/Dropdown";
+import { ButtonSelect } from "./components/UI/ButtonSelect";
 
-const GlobalStyle = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  body {
-    font-family: 'Josefin Sans', sans-serif;
-    background-color: ${colors.bgDark};
-  }
+const StyledContainer = styled(Container)`
+  padding: 10rem 0;
 `;
 
-const StyledH1 = styled.h1`
-  color: ${colors.textPrimary};
-  font-size: 3rem;
-`;
+const options = [
+  { value: 1, title: 1 },
+  { value: 2, title: 2 },
+  { value: 3, title: 3 }
+];
 
 const App = () => (
   <>
     <GlobalStyle />
-    <Container>
-      <StyledH1>Hello world</StyledH1>
-    </Container>
+    <ThemeProvider theme={{ colors }}>
+      <StyledContainer>
+        <Card>
+          <Title>Currency converter</Title>
+          <ButtonSelect options={options}>Click me</ButtonSelect>
+        </Card>
+      </StyledContainer>
+    </ThemeProvider>
   </>
 );
 
