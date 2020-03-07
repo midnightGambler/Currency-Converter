@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.btnBG};
+  background-color: ${({ theme }) => theme.colors.bgLight};
   padding: 1rem 3rem;
   border-radius: 2rem;
   font-weight: 700;
@@ -12,12 +12,10 @@ export const Button = styled.button`
   transition: 0.3s all ease-in-out;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.btnColor};
-    color: ${({ theme }) => theme.colors.btnBG};
+    background-color: ${({ theme }) => theme.colors.bg};
   }
   &:active {
     transition: none;
-    color: ${({ theme }) => theme.colors.btnColor};
-    background-color: ${({ theme }) => theme.colors.btnBG};
+    background-color: ${({ theme }) => theme.colors.bgLight};
   }
 `;

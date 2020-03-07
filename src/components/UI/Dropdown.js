@@ -4,7 +4,7 @@ export const Dropdown = styled.select`
   font-size: 1rem;
   appearance: none;
   padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.btnBG};
+  background-color: ${({ theme }) => theme.colors.bgLight};
   border-radius: 5px;
   outline: none;
   border: none;
