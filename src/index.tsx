@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import ReactDom from "react-dom";
+import * as React from "react";
+import * as ReactDom from "react-dom";
+import { useState } from "react";
 import { GlobalStyle } from "./styles/GlobalStyles";
 import styled, { ThemeProvider } from "styled-components";
 import { colors } from "./styles/variables";
@@ -8,7 +9,8 @@ import { Card } from "./components/UI/Card";
 import { Title } from "./components/UI/Title";
 import { ButtonSelect } from "./components/UI/ButtonSelect";
 import { InputSelect } from "./components/UI/InputSelect";
-import { Input } from "./components/UI/Input";
+import SVG from "react-inlinesvg";
+import Euro from "./svg/euro.svg";
 
 const StyledTitle = styled(Title)`
   margin-bottom: 1rem;
@@ -29,9 +31,9 @@ const options = [
 ];
 
 const App = () => {
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState<string | number>("");
 
-  const onChange = e => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value === "") {
       setValue(e.target.value);
     } else {
@@ -54,6 +56,7 @@ const App = () => {
               placeholder="Enter value"
             />
             <ButtonSelect options={options}>Click me</ButtonSelect>
+            <SVG src={Euro} width="20px" fill="#fff" />
           </Card>
         </StyledContainer>
       </ThemeProvider>

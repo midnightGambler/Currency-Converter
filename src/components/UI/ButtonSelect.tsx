@@ -1,25 +1,36 @@
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
+import { Button } from "./Button";
 import { Dropdown } from "./Dropdown";
-import { Input } from "./Input";
 
 const Wrapper = styled.div`
   display: flex;
-  flex-direction: row;
   align-items: stretch;
   select {
     padding: 1rem 2rem;
     border-radius: 5px 0 0 5px;
     border-right: 2px solid ${({ theme }) => theme.colors.bgDark};
   }
-  input {
+  button {
     flex: 1;
     border-radius: 0 5px 5px 0;
   }
 `;
 
-export const InputSelect = ({ options, className, ...rest }) => (
-  <Wrapper className={className}>
+type option = {
+  title: string | number;
+  value: any;
+};
+
+interface ButtonSelectProps {
+  options: option[];
+}
+
+export const ButtonSelect: React.FC<ButtonSelectProps> = ({
+  children,
+  options
+}) => (
+  <Wrapper>
     <Dropdown>
       {options.map(({ title, value }) => (
         <option key={title} value={value}>
@@ -27,6 +38,6 @@ export const InputSelect = ({ options, className, ...rest }) => (
         </option>
       ))}
     </Dropdown>
-    <Input {...rest} />
+    <Button>{children}</Button>
   </Wrapper>
 );
