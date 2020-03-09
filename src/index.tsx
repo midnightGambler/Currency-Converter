@@ -10,7 +10,8 @@ import { Title } from "./components/UI/Title";
 import { ButtonSelect } from "./components/UI/ButtonSelect";
 import { InputSelect } from "./components/UI/InputSelect";
 import SVG from "react-inlinesvg";
-import Euro from "./svg/euro.svg";
+import euro from "./svg/euro.svg";
+// import * as Euro from "./svg/euro.svg";
 
 const StyledTitle = styled(Title)`
   margin-bottom: 1rem;
@@ -56,7 +57,9 @@ const App = () => {
               placeholder="Enter value"
             />
             <ButtonSelect options={options}>Click me</ButtonSelect>
-            <SVG src={Euro} width="20px" fill="#fff" />
+            <svg viewBox={euro.viewBox}>
+              <use xlinkHref={`#${euro.id}`} />
+            </svg>
           </Card>
         </StyledContainer>
       </ThemeProvider>

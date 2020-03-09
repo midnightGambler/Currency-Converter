@@ -6,6 +6,8 @@
     "target": "es6",
     "jsx": "react",
     "lib": ["es2015", "dom", "dom.iterable"],
-    "moduleResolution": "node"
-  }
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
+  },
+  "esModuleInterop": true
 }
