@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import { Button } from "./Button";
 import { Dropdown } from "./Dropdown";
+import { Icon } from "./Icon";
+import euro from "../../svg/euro.svg";
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,7 +20,7 @@ const Wrapper = styled.div`
 `;
 
 type option = {
-  title: string | number;
+  title: any;
   value: any;
 };
 
@@ -32,9 +34,15 @@ export const ButtonSelect: React.FC<ButtonSelectProps> = ({
 }) => (
   <Wrapper>
     <Dropdown>
-      {options.map(({ title, value }) => (
-        <option key={title} value={value}>
-          {title}
+      {options.map(({ value }) => (
+        <option key={value} value={value}>
+          {console.log(euro)}
+          <Icon
+            glyph={euro.id}
+            viewBox={euro.viewBox}
+            width="24px"
+            height="24px"
+          />
         </option>
       ))}
     </Dropdown>

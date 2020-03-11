@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
-export const Dropdown = styled.select`
+export const DropdownItem = styled.div`
   font-size: 1rem;
-  appearance: none;
   padding: 1rem;
   background-color: ${({ theme }) => theme.colors.bgLight};
-  border-radius: 5px;
-  outline: none;
-  border: none;
   color: ${({ theme }) => theme.colors.btnColor};
+  cursor: pointer;
+  transition: 0.3s background-color ease-in-out;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.bg};
+  }
 `;

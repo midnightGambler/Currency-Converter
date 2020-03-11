@@ -7,11 +7,13 @@ import { colors } from "./styles/variables";
 import { Container } from "./components/UI/Container";
 import { Card } from "./components/UI/Card";
 import { Title } from "./components/UI/Title";
-import { ButtonSelect } from "./components/UI/ButtonSelect";
-import { InputSelect } from "./components/UI/InputSelect";
-import SVG from "react-inlinesvg";
+// import { ButtonSelect } from "./components/UI/ButtonSelect";
+// import { InputSelect } from "./components/UI/InputSelect";
 import euro from "./svg/euro.svg";
-// import * as Euro from "./svg/euro.svg";
+import { Icon } from "./components/UI/Icon";
+import { Dropdown } from "./components/UI/Dropdown";
+import { DropdownItem } from "./components/UI/DropdownItem";
+import { DropdownMenu } from "./components/UI/DropdownMenu";
 
 const StyledTitle = styled(Title)`
   margin-bottom: 1rem;
@@ -21,18 +23,32 @@ const StyledContainer = styled(Container)`
   padding: 10rem 0;
 `;
 
-const StyledInputSelect = styled(InputSelect)`
-  margin-bottom: 1rem;
+const StyledRow = styled.div`
+  display: flex;
 `;
 
+// const StyledInputSelect = styled(InputSelect)`
+//   margin-bottom: 1rem;
+// `;
+
 const options = [
-  { value: 1, title: 1 },
-  { value: 2, title: 2 },
-  { value: 3, title: 3 }
+  {
+    value: 1,
+    title: "eur"
+  },
+  {
+    value: 2,
+    title: "usd"
+  },
+  {
+    value: 3,
+    title: "rub"
+  }
 ];
 
 const App = () => {
   const [value, setValue] = useState<string | number>("");
+  const [currency, setCurrency] = useState<string>("eur");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value === "") {
@@ -49,17 +65,52 @@ const App = () => {
         <StyledContainer>
           <Card>
             <StyledTitle>Currency converter</StyledTitle>
-            <StyledInputSelect
-              onChange={onChange}
-              value={value}
-              options={options}
-              type="text"
-              placeholder="Enter value"
+            <StyledRow>
+              <Dropdown>
+                {currency}
+                {/* <Icon
+                glyph={euro.id}
+                viewBox={euro.viewBox}
+                width="24px"
+                height="24px"
+              /> */}
+
+                <DropdownMenu>
+                  {options.map(option => (
+                    <DropdownItem
+                      onClick={setCurrency.bind(null, option.title)}
+                    >
+                      {option.title}
+                    </DropdownItem>
+                  ))}
+                </DropdownMenu>
+              </Dropdown>
+              <Dropdown>
+                {currency}
+                {/* <Icon
+                glyph={euro.id}
+                viewBox={euro.viewBox}
+                width="24px"
+                height="24px"
+              /> */}
+
+                <DropdownMenu>
+                  {options.map(option => (
+                    <DropdownItem
+                      onClick={setCurrency.bind(null, option.title)}
+                    >
+                      {option.title}
+                    </DropdownItem>
+                  ))}
+                </DropdownMenu>
+              </Dropdown>
+            </StyledRow>
+            <Icon
+              glyph={euro.id}
+              viewBox={euro.viewBox}
+              width="24px"
+              height="24px"
             />
-            <ButtonSelect options={options}>Click me</ButtonSelect>
-            <svg viewBox={euro.viewBox}>
-              <use xlinkHref={`#${euro.id}`} />
-            </svg>
           </Card>
         </StyledContainer>
       </ThemeProvider>

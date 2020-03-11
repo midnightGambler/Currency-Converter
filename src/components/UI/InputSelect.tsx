@@ -2,6 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import { Dropdown } from "./Dropdown";
 import { Input } from "./Input";
+import { Icon } from "./Icon";
+import icon from "../../svg/price.svg";
 
 const Wrapper = styled.div`
   display: flex;
@@ -19,7 +21,7 @@ const Wrapper = styled.div`
 `;
 
 type option = {
-  title: string | number;
+  title: any;
   value: any;
 };
 
@@ -41,7 +43,7 @@ export const InputSelect: React.FC<InputSelectProps> = ({
     <Dropdown>
       {options.map(({ title, value }) => (
         <option key={title} value={value}>
-          {title}
+          <div>test</div>
         </option>
       ))}
     </Dropdown>
