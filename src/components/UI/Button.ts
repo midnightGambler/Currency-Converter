@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  background-color: ${({ theme }) => theme.colors.bgLight};
+  background-color: ${({ theme }) => theme.colors.primary};
   padding: 1rem 3rem;
   border-radius: 2rem;
   font-weight: 700;
@@ -16,6 +16,6 @@ export const Button = styled.button`
   }
   &:active {
     transition: none;
-    background-color: ${({ theme }) => theme.colors.bgLight};
+    background-color: ${({ theme }) => theme.colors.primary};
   }
 `;

@@ -2,9 +2,9 @@ import "styled-components";
 
 declare module "styled-components" {
   export interface DarkTheme {
-    bgLight: string;
     btnColor: string;
+    primary: string;
     bg: string;
-    bgDark: string;
+    bgLight: string;
   }
 }

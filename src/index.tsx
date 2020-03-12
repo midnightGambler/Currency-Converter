@@ -7,13 +7,12 @@ import { colors } from "./styles/variables";
 import { Container } from "./components/UI/Container";
 import { Card } from "./components/UI/Card";
 import { Title } from "./components/UI/Title";
-// import { ButtonSelect } from "./components/UI/ButtonSelect";
-// import { InputSelect } from "./components/UI/InputSelect";
 import euro from "./svg/euro.svg";
-import { Icon } from "./components/UI/Icon";
-import { Dropdown } from "./components/UI/Dropdown";
-import { DropdownItem } from "./components/UI/DropdownItem";
-import { DropdownMenu } from "./components/UI/DropdownMenu";
+import { Icon } from "./components/UI/Icon/Icon";
+import { Dropdown } from "./components/UI/Dropdown/Dropdown";
+import { DropdownItem } from "./components/UI/Dropdown/DropdownItem";
+import { DropdownMenu } from "./components/UI/Dropdown/DropdownMenu";
+import { Input } from "./components/UI/Input";
 
 const StyledTitle = styled(Title)`
   margin-bottom: 1rem;
@@ -26,10 +25,6 @@ const StyledContainer = styled(Container)`
 const StyledRow = styled.div`
   display: flex;
 `;
-
-// const StyledInputSelect = styled(InputSelect)`
-//   margin-bottom: 1rem;
-// `;
 
 const options = [
   {
@@ -47,14 +42,12 @@ const options = [
 ];
 
 const App = () => {
-  const [value, setValue] = useState<string | number>("");
+  const [value, setValue] = useState<string>("");
   const [currency, setCurrency] = useState<string>("eur");
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === "") {
+    if (/^\d{1,}(\.\d{0,2})?$/.test(e.target.value) || !e.target.value) {
       setValue(e.target.value);
-    } else {
-      /^[0-9]*$/.test(e.target.value) && setValue(parseInt(e.target.value));
     }
   };
 
@@ -85,25 +78,7 @@ const App = () => {
                   ))}
                 </DropdownMenu>
               </Dropdown>
-              <Dropdown>
-                {currency}
-                {/* <Icon
-                glyph={euro.id}
-                viewBox={euro.viewBox}
-                width="24px"
-                height="24px"
-              /> */}
-
-                <DropdownMenu>
-                  {options.map(option => (
-                    <DropdownItem
-                      onClick={setCurrency.bind(null, option.title)}
-                    >
-                      {option.title}
-                    </DropdownItem>
-                  ))}
-                </DropdownMenu>
-              </Dropdown>
+              <Input onChange={onChange} value={value} />
             </StyledRow>
             <Icon
               glyph={euro.id}
