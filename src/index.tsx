@@ -23,7 +23,7 @@ const StyledTitle = styled(Title)`
 `;
 
 const StyledContainer = styled(Container)`
-  padding: 10rem 0;
+  padding: 7rem 0;
 `;
 
 const StyledRow = styled.div`
@@ -89,7 +89,7 @@ const App = () => {
                     ))}
                 </DropdownMenu>
               </Dropdown>
-              <Input onChange={onChange} value={value} />
+              <Input autoFocus onChange={onChange} value={value} />
             </StyledRow>
           </Card>
         </StyledContainer>

@@ -7,8 +7,9 @@ export const StyledDropdown = styled.div<StyledDropdownProps>`
   padding: 1rem;
   border-radius: ${({ isOpen }) => (isOpen ? "2rem 2rem 0 0" : "2rem")};
   color: ${({ theme }) => theme.colors.btnColor};
-  background-color: ${({ isOpen }) => (isOpen ? "#49484b" : "none")};
+  background-color: ${({ isOpen }) => (isOpen ? "#49484b" : "transparent")};
   cursor: pointer;
+  line-height: 0;
   .dropdown-menu {
     display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   }
