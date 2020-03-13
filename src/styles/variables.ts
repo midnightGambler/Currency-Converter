@@ -1,7 +1,7 @@
 import { DarkTheme } from "styled-components";
 export const colors: DarkTheme = {
-  btnColor: "#fff",
+  btnColor: "#fdf173",
   primary: "#dc658d",
-  bg: "#282c35",
-  bgLight: "#363c48"
+  bg: "#545256",
+  bgLight: "#4f4e51"
 };

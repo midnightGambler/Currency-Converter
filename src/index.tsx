@@ -7,8 +7,12 @@ import { colors } from "./styles/variables";
 import { Container } from "./components/UI/Container";
 import { Card } from "./components/UI/Card";
 import { Title } from "./components/UI/Title";
-import euro from "./svg/euro.svg";
+import eur from "./svg/eur.svg";
+import usd from "./svg/usd.svg";
+import gbp from "./svg/gbp.svg";
+import rub from "./svg/rub.svg";
 import { Icon } from "./components/UI/Icon/Icon";
+import { IconProps } from "./components/UI/Icon/interfaces";
 import { Dropdown } from "./components/UI/Dropdown/Dropdown";
 import { DropdownItem } from "./components/UI/Dropdown/DropdownItem";
 import { DropdownMenu } from "./components/UI/Dropdown/DropdownMenu";
@@ -24,22 +28,36 @@ const StyledContainer = styled(Container)`
 
 const StyledRow = styled.div`
   display: flex;
+  box-shadow: 8px 8px 16px #424244, -8px -8px 16px #5c5a5e;
+  border-radius: 2rem;
 `;
 
-const options = [
-  {
+const options: any = {
+  eur: {
     value: 1,
-    title: "eur"
+    icon: (
+      <Icon glyph={eur.id} viewBox={eur.viewBox} width="24px" height="24px" />
+    )
   },
-  {
+  usd: {
     value: 2,
-    title: "usd"
+    icon: (
+      <Icon glyph={usd.id} viewBox={usd.viewBox} width="24px" height="24px" />
+    )
   },
-  {
+  rub: {
     value: 3,
-    title: "rub"
+    icon: (
+      <Icon glyph={rub.id} viewBox={rub.viewBox} width="24px" height="24px" />
+    )
+  },
+  gbp: {
+    value: 4,
+    icon: (
+      <Icon glyph={gbp.id} viewBox={gbp.viewBox} width="24px" height="24px" />
+    )
   }
-];
+};
 
 const App = () => {
   const [value, setValue] = useState<string>("");
@@ -57,35 +75,22 @@ const App = () => {
       <ThemeProvider theme={{ colors }}>
         <StyledContainer>
           <Card>
-            <StyledTitle>Currency converter</StyledTitle>
+            <StyledTitle>Dolly Leigh</StyledTitle>
             <StyledRow>
               <Dropdown>
-                {currency}
-                {/* <Icon
-                glyph={euro.id}
-                viewBox={euro.viewBox}
-                width="24px"
-                height="24px"
-              /> */}
-
+                {options[currency].icon}
                 <DropdownMenu>
-                  {options.map(option => (
-                    <DropdownItem
-                      onClick={setCurrency.bind(null, option.title)}
-                    >
-                      {option.title}
-                    </DropdownItem>
-                  ))}
+                  {Object.keys(options)
+                    .filter(key => key !== currency)
+                    .map(key => (
+                      <DropdownItem onClick={setCurrency.bind(null, key)}>
+                        {options[key].icon}
+                      </DropdownItem>
+                    ))}
                 </DropdownMenu>
               </Dropdown>
               <Input onChange={onChange} value={value} />
             </StyledRow>
-            <Icon
-              glyph={euro.id}
-              viewBox={euro.viewBox}
-              width="24px"
-              height="24px"
-            />
           </Card>
         </StyledContainer>
       </ThemeProvider>

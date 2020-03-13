@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Input = styled.input`
   color: ${({ theme }) => theme.colors.btnColor};
-  padding: 1rem 2rem;
-  background-color: ${({ theme }) => theme.colors.bg};
+  padding: 1rem;
+  background-color: transparent;
+  /* background-color: ${({ theme }) => theme.colors.bg}; */
   border: none;
   border-radius: 5px;
   outline: none;

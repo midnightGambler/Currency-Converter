@@ -5,10 +5,10 @@ export const StyledDropdown = styled.div<StyledDropdownProps>`
   position: relative;
   font-size: 1rem;
   padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.primary};
-  border-radius: ${({ isOpen }) => (isOpen ? "5px 5px 0 0" : "5px")};
+  border-radius: ${({ isOpen }) => (isOpen ? "2rem 2rem 0 0" : "2rem")};
   color: ${({ theme }) => theme.colors.btnColor};
-
+  background-color: ${({ isOpen }) => (isOpen ? "#49484b" : "none")};
+  cursor: pointer;
   .dropdown-menu {
     display: ${({ isOpen }) => (isOpen ? "block" : "none")};
   }
@@ -22,7 +22,7 @@ export const StyledDropdownMenu = styled.div.attrs(() => ({
   right: 0;
   top: 100%;
   .dropdown-item:last-child {
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 2rem 2rem;
   }
 `;
 
@@ -31,7 +31,7 @@ export const StyledDropdownItem = styled.div.attrs({
 })`
   font-size: 1rem;
   padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.primary};
+  background-color: #49484b;
   color: ${({ theme }) => theme.colors.btnColor};
   cursor: pointer;
   transition: 0.3s background-color ease-in-out;
