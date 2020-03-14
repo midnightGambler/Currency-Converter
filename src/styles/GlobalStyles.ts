@@ -16,4 +16,8 @@ html {
 body {
   background-color: ${colors.lightGrey};
 }
+
+ul {
+  list-style: none;
+}
 `;

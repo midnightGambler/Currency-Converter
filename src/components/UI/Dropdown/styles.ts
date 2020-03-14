@@ -20,7 +20,7 @@ export const StyledDropdown = styled.div<StyledDropdownProps>`
   }
 `;
 
-export const StyledDropdownMenu = styled.div.attrs({
+export const StyledDropdownMenu = styled.ul.attrs({
   className: "dropdown-menu"
 })`
   position: absolute;
@@ -32,7 +32,7 @@ export const StyledDropdownMenu = styled.div.attrs({
   }
 `;
 
-export const StyledDropdownItem = styled.div.attrs({
+export const StyledDropdownItem = styled.li.attrs({
   className: "dropdown-item"
 })`
   font-size: 1rem;
