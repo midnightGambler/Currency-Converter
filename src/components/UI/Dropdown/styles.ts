@@ -10,9 +10,9 @@ export const StyledDropdown = styled.div<StyledDropdownProps>`
   background-color: ${({
     isOpen,
     theme: {
-      colors: { darkGrey }
+      colors: { bgDark }
     }
-  }) => (isOpen ? darkGrey : "transparent")};
+  }) => (isOpen ? bgDark : "transparent")};
   cursor: pointer;
   line-height: 0;
   .dropdown-menu {
@@ -39,13 +39,13 @@ export const StyledDropdownItem = styled.li.attrs({
   padding: 1rem;
   background-color: ${({
     theme: {
-      colors: { darkGrey }
+      colors: { bgDark }
     }
-  }) => darkGrey};
+  }) => bgDark};
   color: ${({ theme }) => theme.colors.primary};
   cursor: pointer;
   transition: 0.3s background-color ease-in-out;
   &:hover {
-    background-color: ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.bgLight};
   }
 `;

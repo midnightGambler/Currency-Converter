@@ -1,5 +1,14 @@
-import styled from "styled-components";
+import styled, { keyframes, DarkTheme } from "styled-components";
 import { Title } from "../UI/Title";
+
+const animatedShadow = (props: { theme: { colors: DarkTheme } }) => keyframes`
+  0% {
+    box-shadow: none;
+  }
+  100% {
+    box-shadow: ${props.theme.colors.boxShadow};
+  }
+`;
 
 export const StyledTitle = styled(Title)`
   margin-bottom: 1rem;
@@ -7,6 +16,6 @@ export const StyledTitle = styled(Title)`
 
 export const StyledRow = styled.div`
   display: flex;
-  box-shadow: 8px 8px 16px #424244, -8px -8px 16px #5c5a5e;
   border-radius: 2rem;
+  animation: ${animatedShadow} 0.5s ease-in-out 1.5s forwards;
 `;

@@ -7,7 +7,7 @@ export const Icon: React.FC<IconProps> = ({
   glyph,
   ...props
 }) => (
-  <svg fill="#fdf173" className={className} viewBox={viewBox} {...props}>
+  <svg className={className} viewBox={viewBox} {...props}>
     <use xlinkHref={`#${glyph}`} />
   </svg>
 );

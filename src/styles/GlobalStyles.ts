@@ -14,7 +14,7 @@ html {
   font-size: 20px;
 }
 body {
-  background-color: ${colors.lightGrey};
+  background-color: ${colors.bgLight};
 }
 
 ul {

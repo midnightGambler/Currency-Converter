@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Input = styled.input`
   color: ${({ theme }) => theme.colors.primary};
   padding: 1rem;
-  background-color: ${({ theme }) => theme.colors.darkGrey};
+  background-color: ${({ theme }) => theme.colors.bgDark};
   border: none;
   border-radius: 0 2rem 2rem 0;
   outline: none;
@@ -14,7 +14,7 @@ export const Input = styled.input`
     margin: 0;
   }
   &::placeholder {
-    color: ${({ theme }) => theme.colors.lightGrey};
+    color: ${({ theme }) => theme.colors.bgLight};
     font-weight: 700;
   }
 `;

@@ -3,8 +3,9 @@ import "styled-components";
 declare module "styled-components" {
   export interface DarkTheme {
     primary: string;
-    lightGrey: string;
-    grey: string;
-    darkGrey: string;
+    bgLight: string;
+    bg: string;
+    bgDark: string;
+    boxShadow: string;
   }
 }
