@@ -4,4 +4,6 @@ export interface IconProps {
   width: string;
   height: string;
   className?: string;
+  primary?: boolean;
+  fill?: string;
 }

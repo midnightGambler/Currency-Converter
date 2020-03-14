@@ -9,7 +9,7 @@ export const App: React.FC = () => {
   return (
     <>
       <GlobalStyle />
-      <ThemeProvider theme={{ colors }}>
+      <ThemeProvider theme={colors}>
         <StyledContainer>
           <CurrencyConverter />
         </StyledContainer>

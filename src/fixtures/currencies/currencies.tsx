@@ -7,15 +7,12 @@ import gbp from "../../svg/gbp.svg";
 import rub from "../../svg/rub.svg";
 import { Icon } from "../../components/UI/Icon/Icon";
 
-const StyledIcon = styled(Icon)`
-  fill: ${({ theme }) => theme.colors.primary};
-`;
-
 export const options: any = {
   eur: {
     value: 1,
     icon: (
-      <StyledIcon
+      <Icon
+        primary
         glyph={eur.id}
         viewBox={eur.viewBox}
         width="24px"
@@ -26,7 +23,8 @@ export const options: any = {
   usd: {
     value: 2,
     icon: (
-      <StyledIcon
+      <Icon
+        primary
         glyph={usd.id}
         viewBox={usd.viewBox}
         width="24px"
@@ -37,7 +35,8 @@ export const options: any = {
   rub: {
     value: 3,
     icon: (
-      <StyledIcon
+      <Icon
+        primary
         glyph={rub.id}
         viewBox={rub.viewBox}
         width="24px"
@@ -48,7 +47,8 @@ export const options: any = {
   gbp: {
     value: 4,
     icon: (
-      <StyledIcon
+      <Icon
+        primary
         glyph={gbp.id}
         viewBox={gbp.viewBox}
         width="24px"

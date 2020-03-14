@@ -6,13 +6,9 @@ export const StyledDropdown = styled.div<StyledDropdownProps>`
   font-size: 1rem;
   padding: 1rem;
   border-radius: ${({ isOpen }) => (isOpen ? "2rem 0 0 0" : "2rem")};
-  color: ${({ theme }) => theme.colors.primary};
-  background-color: ${({
-    isOpen,
-    theme: {
-      colors: { bgDark }
-    }
-  }) => (isOpen ? bgDark : "transparent")};
+  color: ${({ theme }) => theme.primary};
+  background-color: ${({ isOpen, theme: { bgDark } }) =>
+    isOpen ? bgDark : "transparent"};
   cursor: pointer;
   line-height: 0;
   .dropdown-menu {
@@ -24,6 +20,7 @@ export const StyledDropdownMenu = styled.ul.attrs({
   className: "dropdown-menu"
 })`
   position: absolute;
+  z-index: 1;
   left: 0;
   right: 0;
   top: 100%;
@@ -37,15 +34,11 @@ export const StyledDropdownItem = styled.li.attrs({
 })`
   font-size: 1rem;
   padding: 1rem;
-  background-color: ${({
-    theme: {
-      colors: { bgDark }
-    }
-  }) => bgDark};
-  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme: { bgDark } }) => bgDark};
+  color: ${({ theme }) => theme.primary};
   cursor: pointer;
   transition: 0.3s background-color ease-in-out;
   &:hover {
-    background-color: ${({ theme }) => theme.colors.bgLight};
+    background-color: ${({ theme }) => theme.bgLight};
   }
 `;

@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
   font-size: 1rem;
-
+  color: ${colors.primary};
 }
 html {
   font-size: 20px;

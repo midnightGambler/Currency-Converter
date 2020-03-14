@@ -1,8 +1,6 @@
-import styled, { keyframes, DarkTheme } from "styled-components";
+import styled, { keyframes, DefaultTheme } from "styled-components";
 
-const animatedBoxShadow = (props: {
-  theme: { colors: DarkTheme };
-}) => keyframes`
+const animatedBoxShadow = (props: { theme: DefaultTheme }) => keyframes`
   0% {
     box-shadow: none;
     opacity: 0;
@@ -20,12 +18,12 @@ const animatedBoxShadow = (props: {
     transform: scale(1);
   }
   100% {
-    box-shadow: ${props.theme.colors.boxShadow};
+    box-shadow: ${props.theme.boxShadow};
   }
 `;
 
 export const Card = styled.div`
-  background-color: ${({ theme }) => theme.colors.bg};
+  background-color: ${({ theme }) => theme.bg};
   padding: 2rem;
   border-radius: 32px;
   animation: ${animatedBoxShadow} 1.5s ease-in-out 0s forwards;
