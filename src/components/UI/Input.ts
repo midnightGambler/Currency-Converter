@@ -1,12 +1,11 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
-  color: ${({ theme }) => theme.colors.btnColor};
+  color: ${({ theme }) => theme.colors.primary};
   padding: 1rem;
-  background-color: transparent;
-  /* background-color: ${({ theme }) => theme.colors.bg}; */
+  background-color: ${({ theme }) => theme.colors.darkGrey};
   border: none;
-  border-radius: 5px;
+  border-radius: 0 2rem 2rem 0;
   outline: none;
   width: 100%;
   &::-webkit-outer-spin-button,
@@ -15,6 +14,7 @@ export const Input = styled.input`
     margin: 0;
   }
   &::placeholder {
-    color: ${({ theme }) => theme.colors.bgLight};
+    color: ${({ theme }) => theme.colors.lightGrey};
+    font-weight: 700;
   }
 `;

@@ -89,7 +89,12 @@ const App = () => {
                     ))}
                 </DropdownMenu>
               </Dropdown>
-              <Input autoFocus onChange={onChange} value={value} />
+              <Input
+                placeholder="Enter amount"
+                autoFocus
+                onChange={onChange}
+                value={value}
+              />
             </StyledRow>
           </Card>
         </StyledContainer>

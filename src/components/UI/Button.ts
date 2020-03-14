@@ -5,14 +5,14 @@ export const Button = styled.button`
   padding: 1rem 3rem;
   border-radius: 2rem;
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.btnColor};
+  color: ${({ theme }) => theme.colors.darkGrey};
   outline: none;
   cursor: pointer;
   border: none;
   transition: 0.3s all ease-in-out;
 
   &:hover {
-    background-color: ${({ theme }) => theme.colors.bg};
+    background-color: ${({ theme }) => theme.colors.lightGrey};
   }
   &:active {
     transition: none;

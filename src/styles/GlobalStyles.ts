@@ -14,6 +14,6 @@ html {
   font-size: 20px;
 }
 body {
-  background-color: ${colors.bg};
+  background-color: ${colors.lightGrey};
 }
 `;
