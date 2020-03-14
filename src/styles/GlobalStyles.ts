@@ -17,6 +17,10 @@ body {
   background-color: ${colors.bgLight};
 }
 
+small {
+  font-size: 14px;
+}
+
 ul {
   list-style: none;
 }
