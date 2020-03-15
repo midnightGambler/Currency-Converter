@@ -1,31 +1,23 @@
 import * as React from "react";
 import {
   StyledCard,
-  StyledSubtitle,
-  StyledCloseIcon,
   StyledExchangeIcon,
-  StyledSmall
+  StyledSmall,
+  StyledReadonlyInput
 } from "./styles";
 import { CurrencyCardProps } from "./interfaces";
-import close from "../../svg/close.svg";
 import exchange from "../../svg/exchange.svg";
 
-export const CurrencyCard: React.FC<CurrencyCardProps> = ({
-  children,
-  rate
-}) => {
+export const CurrencyCard: React.FC<CurrencyCardProps> = ({ rate, type }) => {
+  const inputRef = React.useRef(null);
+
+  const handleCopy = (e: React.FocusEvent<HTMLInputElement>) => {
+    inputRef.current.select();
+    document.execCommand("copy");
+  };
+
   return (
-    <StyledCard>
-      <StyledSubtitle>
-        {children}
-        <StyledCloseIcon
-          primary
-          glyph={close.id}
-          viewBox={close.viewBox}
-          width="16px"
-          height="16px"
-        />
-      </StyledSubtitle>
+    <StyledCard type={type}>
       <StyledSmall>
         <StyledExchangeIcon
           primary
@@ -36,7 +28,13 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
         />
         {rate}
       </StyledSmall>
-      <b>1520</b>
+      <StyledReadonlyInput
+        onFocus={handleCopy}
+        ref={inputRef}
+        readOnly
+        value="15201"
+        tabIndex={-1}
+      />
     </StyledCard>
   );
 };

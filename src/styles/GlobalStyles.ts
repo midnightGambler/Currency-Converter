@@ -24,4 +24,9 @@ small {
 ul {
   list-style: none;
 }
+
+#app {
+  display: flex;
+  height: 100vh;
+}
 `;

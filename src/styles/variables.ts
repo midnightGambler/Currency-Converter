@@ -22,7 +22,7 @@ import { DefaultTheme } from "styled-components";
 export const colors: DefaultTheme = {
   bgLight: "#545256",
   bg: "#4f4e51",
-  bgDark: "#49484b",
+  bgDark: "#424244",
   primary: "#fdf173",
   boxShadow: "8px 8px 16px #424244, -8px -8px 16px #5c5a5e"
 };
