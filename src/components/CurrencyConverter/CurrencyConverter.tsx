@@ -41,7 +41,9 @@ export const CurrencyConverter: React.FC = () => (
     </StyledRow>
     <StyledLayout>
       {currencies.map(({ title, rate, icon }) => (
-        <CurrencyCard type={title} rate={rate} icon={icon} />
+        <div className="item">
+          <CurrencyCard type={title} rate={rate} icon={icon} />
+        </div>
       ))}
     </StyledLayout>
   </AnimatedCard>

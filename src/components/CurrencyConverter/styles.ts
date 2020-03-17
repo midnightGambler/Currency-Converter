@@ -20,6 +20,14 @@ export const StyledLayout = styled.div`
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: -1rem;
+  margin-right: -0.5rem;
+  margin-left: -0.5rem;
+
+  .item {
+    padding: 0 0.5rem;
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 `;
 
 export const AnimatedCard = styled(Card)`

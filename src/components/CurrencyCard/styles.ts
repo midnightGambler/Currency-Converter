@@ -17,20 +17,9 @@ interface StyledCardProps {
 }
 
 export const StyledCard = styled(Card)<StyledCardProps>`
-  position: relative;
-  max-width: 49%;
   padding: 1rem;
   margin-bottom: 1rem;
   animation: ${animatedShadow} 0.5s ease-in-out 2s forwards;
-  /* &:before {
-    content: '${({ type }) => getCurrencySign(type)}';
-    position: absolute;
-    font-size: 2rem;
-    right: 1rem;
-    top: .5rem;
-    line-height: 1;
-    font-family: Arial;
-  } */
 `;
 
 export const StyledSmall = styled.small`
@@ -46,7 +35,7 @@ export const StyledReadonlyInput = styled.input`
   width: 100%;
   padding: 0.25rem;
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.bgLight};
+  background-color: ${({ theme }) => theme.bgDark};
   &:hover {
     cursor: copy;
   }
