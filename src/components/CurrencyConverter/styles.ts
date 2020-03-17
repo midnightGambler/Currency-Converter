@@ -5,6 +5,14 @@ import { animatedBoxShadow, animatedShadow } from "../../styles/animations";
 
 export const StyledTitle = styled(Title)`
   margin-bottom: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
+  @media (max-width: 425px) {
+    text-align: center;
+    font-size: 1.25rem;
+  }
 `;
 
 export const StyledRow = styled.div`
@@ -27,6 +35,11 @@ export const StyledLayout = styled.div`
     padding: 0 0.5rem;
     flex: 0 0 50%;
     max-width: 50%;
+
+    @media (max-width: 768px) {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
   }
 `;
 

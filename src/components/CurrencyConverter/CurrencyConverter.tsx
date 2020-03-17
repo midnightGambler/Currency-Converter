@@ -34,7 +34,7 @@ const currencies: { title: currencyType; rate: number; icon: any }[] = [
 
 export const CurrencyConverter: React.FC = () => (
   <AnimatedCard>
-    <StyledTitle>Dolly Leigh</StyledTitle>
+    <StyledTitle>Currency converter</StyledTitle>
     <StyledRow>
       <CurrencySelector />
       <AmountInput />
