@@ -40,8 +40,7 @@ export const StyledReadonlyInput = styled.input`
     cursor: copy;
   }
   &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2pt ${({ theme }) => theme.primary};
+    outline: 2px solid ${({ theme }) => theme.primary};
   }
 
   &::selection {

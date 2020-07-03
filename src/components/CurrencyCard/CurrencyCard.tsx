@@ -31,7 +31,7 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
           width="12px"
           height="12px"
         />
-        {rate}
+        {rate.toFixed(4)}
         <StyledCurrencyIcon
           primary
           glyph={icon.id}

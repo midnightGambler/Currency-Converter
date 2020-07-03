@@ -1,25 +1,49 @@
 import * as React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { Dropdown } from "../UI/Dropdown/Dropdown";
 import { DropdownMenu } from "../UI/Dropdown/DropdownMenu";
 import { DropdownItem } from "../UI/Dropdown/DropdownItem";
+import { Icon } from "../UI/Icon/Icon";
 import { options } from "../../fixtures/currencies/currencies";
+import { defaultStateType } from "../../store/reducers/currenciesReducer";
+import { currencyType } from "../../utils/interfaces";
+import { setSelectedCurrency } from "../../store/actions/currenciesActions";
 
 export const CurrencySelector: React.FC = () => {
-  const [currency, setCurrency] = React.useState<string>("eur");
+  const dispatch = useDispatch();
+  const { currencies, selectedCurrency } = useSelector(
+    (state: defaultStateType) => ({
+      currencies: state.rates,
+      selectedCurrency: state.selectedCurrency,
+    })
+  );
+
+  const handleSelectCurrency = (currency: currencyType) => {
+    dispatch(setSelectedCurrency(currency));
+  };
 
   const renderCurrencies = () => {
-    return Object.keys(options)
-      .filter(key => key !== currency)
-      .map(key => (
-        <DropdownItem key={key} onClick={setCurrency.bind(null, key)}>
-          {options[key].icon}
+    return currencies
+      .filter(({ title }) => title !== selectedCurrency)
+      .map(({ title, icon }) => (
+        <DropdownItem
+          key={title}
+          onClick={handleSelectCurrency.bind(null, title)}
+        >
+          <Icon
+            primary
+            glyph={icon.id}
+            viewBox={icon.viewBox}
+            width="24px"
+            height="24px"
+          />
         </DropdownItem>
       ));
   };
 
   return (
     <Dropdown>
-      {options[currency].icon}
+      {options[selectedCurrency.toLowerCase()].icon}
       <DropdownMenu>{renderCurrencies()}</DropdownMenu>
     </Dropdown>
   );

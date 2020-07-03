@@ -5,8 +5,8 @@ export const useOuterClick = (
   ref: RefObject<HTMLDivElement>,
   callback: () => void
 ) => {
-  const handleClickOutside = (event: any) => {
-    if (ref.current && !ref.current.contains(event.target)) {
+  const handleClickOutside = (event: MouseEvent) => {
+    if (ref.current && !ref.current.contains(event.target as Node)) {
       callback();
     }
   };

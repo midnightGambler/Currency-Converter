@@ -8,4 +8,4 @@ export type currencyType =
   | "RUB"
   | "USD";
 
-export type currenciesType = { title: currencyType; rate: string; icon: any }[];
+export type currenciesType = { title: currencyType; rate: number; icon: any }[];

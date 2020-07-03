@@ -1,5 +1,4 @@
 import * as React from "react";
-import styled from "styled-components";
 
 import eur from "../../svg/eur.svg";
 import usd from "../../svg/usd.svg";
@@ -18,7 +17,7 @@ export const options: any = {
         width="24px"
         height="24px"
       />
-    )
+    ),
   },
   usd: {
     value: 2,
@@ -30,7 +29,7 @@ export const options: any = {
         width="24px"
         height="24px"
       />
-    )
+    ),
   },
   rub: {
     value: 3,
@@ -42,7 +41,7 @@ export const options: any = {
         width="24px"
         height="24px"
       />
-    )
+    ),
   },
   gbp: {
     value: 4,
@@ -54,6 +53,6 @@ export const options: any = {
         width="24px"
         height="24px"
       />
-    )
-  }
+    ),
+  },
 };

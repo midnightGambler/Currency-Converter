@@ -30,16 +30,16 @@ export const StyledLayout = styled.div`
   margin-bottom: -1rem;
   margin-right: -0.5rem;
   margin-left: -0.5rem;
+`;
 
-  .item {
-    padding: 0 0.5rem;
-    flex: 0 0 50%;
-    max-width: 50%;
+export const StyledLayoutItem = styled.div`
+  padding: 0 0.5rem;
+  flex: 0 0 50%;
+  max-width: 50%;
 
-    @media (max-width: 768px) {
-      flex: 0 0 100%;
-      max-width: 100%;
-    }
+  @media (max-width: 768px) {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 `;
 
