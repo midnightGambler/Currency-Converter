@@ -6,7 +6,7 @@
   "homepage": "https://midnightgambler.github.io/Currency-Converter/",
   "scripts": {
     "start:dev": "webpack-dev-server --mode development",
-    "build:prod": "webpack --mode production"
+    "build:prod": "webpack --mode=production"
   },
   "author": "Ashur Aghabalazada",
   "license": "ISC",
