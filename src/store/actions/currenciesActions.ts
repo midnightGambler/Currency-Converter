@@ -1,6 +1,6 @@
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { SET_RATES, SET_SELECTED_CURRENCY } from "../types";
+import { SET_RATES, SET_SELECTED_CURRENCY, SET_VALUE } from "../types";
 import { defaultStateType } from "../reducers/currenciesReducer";
 import { currencyType } from "../../utils/interfaces";
 import EUR from "../../svg/eur.svg";
@@ -20,6 +20,11 @@ const icons: any = {
 const setRates = (rates: any) => ({
   type: SET_RATES,
   rates,
+});
+
+export const setValue = (value: string) => ({
+  type: SET_VALUE,
+  value,
 });
 
 export const setSelectedCurrency = (selectedCurrency: currencyType) => ({

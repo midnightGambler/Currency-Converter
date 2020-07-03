@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useSelector } from "react-redux";
 import {
   StyledCard,
   StyledExchangeIcon,
@@ -8,12 +9,14 @@ import {
 } from "./styles";
 import { CurrencyCardProps } from "./interfaces";
 import exchange from "../../svg/exchange.svg";
+import { defaultStateType } from "../../store/reducers/currenciesReducer";
 
 export const CurrencyCard: React.FC<CurrencyCardProps> = ({
   rate,
   type,
   icon,
 }) => {
+  const value = useSelector((state: defaultStateType) => state.value);
   const inputRef = React.useRef(null);
 
   const handleCopy = (e: React.FocusEvent<HTMLInputElement>) => {
@@ -45,7 +48,7 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
         onFocus={handleCopy}
         ref={inputRef}
         readOnly
-        value={rate}
+        value={(rate * Number(value)).toFixed(2)}
         tabIndex={-1}
       />
     </StyledCard>

@@ -1,12 +1,14 @@
-import { SET_RATES, SET_SELECTED_CURRENCY } from "../types";
+import { SET_RATES, SET_SELECTED_CURRENCY, SET_VALUE } from "../types";
 
 import EUR from "../../svg/eur.svg";
 import GBP from "../../svg/gbp.svg";
 import RUB from "../../svg/rub.svg";
 import USD from "../../svg/usd.svg";
+
 import { currencyType } from "../../utils/interfaces";
 
 export type defaultStateType = {
+  value: string;
   selectedCurrency: currencyType;
   rates: {
     title: currencyType;
@@ -16,6 +18,7 @@ export type defaultStateType = {
 };
 
 const defaultState: defaultStateType = {
+  value: "",
   selectedCurrency: "USD",
   rates: [
     {
@@ -47,6 +50,8 @@ export const currenciesReducer = (state = defaultState, action: any) => {
       return { ...state, rates: action.rates };
     case SET_SELECTED_CURRENCY:
       return { ...state, selectedCurrency: action.selectedCurrency };
+    case SET_VALUE:
+      return { ...state, value: action.value };
     default:
       return state;
   }
