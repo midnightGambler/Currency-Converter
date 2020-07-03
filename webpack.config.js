@@ -1,40 +1,71 @@
-const path = require('path');
-const HTML = require('html-webpack-plugin');
+const webpack = require("webpack");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const dotenv = require("dotenv");
+
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
-  entry: './app/index.js',
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'index-bundle.js',
+  entry: "./src/index.tsx",
+  // devtool: "inline-source-map",
+  resolve: {
+    extensions: [".ts", ".tsx", ".js"],
   },
-  mode: 'development',
+  node: {
+    fs: "empty",
+  },
+  output: {
+    path: path.join(__dirname, "/docs"),
+    filename: "bundle.js",
+    chunkFilename: "vendors.js",
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./template.html",
+      hash: true,
+    }),
+    new webpack.DefinePlugin(envKeys),
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+  },
   module: {
     rules: [
-      { test: /\.(js)$/, use: 'babel-loader' },
-      { test: /\.(css)$/, use: ['style-loader', 'css-loader'] },
       {
-        test: /\.(png|jpg)$/,
-        loader: 'url-loader',
-      },
-      {
-        test: /\.less$/,
+        test: /\.ts(x?)$/,
+        exclude: /node_modules/,
         use: [
           {
-            loader: 'style-loader',
-          },
-          {
-            loader: 'css-loader',
-          },
-          {
-            loader: 'less-loader',
+            loader: "ts-loader",
           },
         ],
       },
+      {
+        enforce: "pre",
+        test: /\.js$/,
+        loader: "source-map-loader",
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-sprite-loader",
+      },
     ],
   },
-  plugins: [
-    new HTML({
-      template: 'app/index.html',
-    }),
-  ],
+  devServer: {
+    contentBase: path.join(__dirname, "docs"),
+  },
 };
