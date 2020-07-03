@@ -12,23 +12,30 @@ const envKeys = Object.keys(env).reduce((prev, next) => {
 
 module.exports = {
   entry: "./src/index.tsx",
-  devtool: "inline-source-map",
+  // devtool: "inline-source-map",
   resolve: {
-    extensions: [".ts", ".tsx", ".js"]
+    extensions: [".ts", ".tsx", ".js"],
   },
   node: {
-    fs: "empty"
+    fs: "empty",
   },
   output: {
     path: path.join(__dirname, "/docs"),
-    filename: "bundle.js"
+    filename: "bundle.js",
+    chunkFilename: "vendors.js",
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./template.html"
+      template: "./template.html",
+      hash: true,
     }),
-    new webpack.DefinePlugin(envKeys)
+    new webpack.DefinePlugin(envKeys),
   ],
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+  },
   module: {
     rules: [
       {
@@ -36,29 +43,29 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "ts-loader"
-          }
-        ]
+            loader: "ts-loader",
+          },
+        ],
       },
       {
         enforce: "pre",
         test: /\.js$/,
-        loader: "source-map-loader"
+        loader: "source-map-loader",
       },
       {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader"
-        }
+          loader: "babel-loader",
+        },
       },
       {
         test: /\.svg$/,
-        loader: "svg-sprite-loader"
-      }
-    ]
+        loader: "svg-sprite-loader",
+      },
+    ],
   },
   devServer: {
-    contentBase: path.join(__dirname, "docs")
-  }
+    contentBase: path.join(__dirname, "docs"),
+  },
 };
