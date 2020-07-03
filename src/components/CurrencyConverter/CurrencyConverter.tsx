@@ -3,48 +3,40 @@ import { CurrencySelector } from "../CurrencySelector/CurrencySelector";
 import { AmountInput } from "../AmountInput/AmountInput";
 import { StyledTitle, StyledRow, StyledLayout, AnimatedCard } from "./styles";
 import { CurrencyCard } from "../CurrencyCard/CurrencyCard";
-import { currencyType } from "../../utils/interfaces";
-import eur from "../../svg/eur.svg";
-import gbp from "../../svg/gbp.svg";
-import rub from "../../svg/rub.svg";
-import usd from "../../svg/usd.svg";
+import { currenciesType } from "../../utils/interfaces";
+import { startSetRates } from "../../store/actions/currenciesActions";
+import { useSelector, useDispatch } from "react-redux";
+import { defaultStateType } from "../../store/reducers/currenciesReducer";
 
-const currencies: { title: currencyType; rate: number; icon: any }[] = [
-  {
-    title: "eur",
-    rate: 85.1232,
-    icon: eur
-  },
-  {
-    title: "rub",
-    rate: 1,
-    icon: rub
-  },
-  {
-    title: "gbp",
-    rate: 95.1232,
-    icon: gbp
-  },
-  {
-    title: "usd",
-    rate: 75.1232,
-    icon: usd
-  }
-];
+export const CurrencyConverter: React.FC = () => {
+  const [currencies, setCurrencies] = React.useState<currenciesType>([]);
 
-export const CurrencyConverter: React.FC = () => (
-  <AnimatedCard>
-    <StyledTitle>Currency converter</StyledTitle>
-    <StyledRow>
-      <CurrencySelector />
-      <AmountInput />
-    </StyledRow>
-    <StyledLayout>
-      {currencies.map(({ title, rate, icon }) => (
-        <div className="item">
-          <CurrencyCard type={title} rate={rate} icon={icon} />
-        </div>
-      ))}
-    </StyledLayout>
-  </AnimatedCard>
-);
+  const dispatch = useDispatch();
+
+  const store = useSelector((state: defaultStateType) => state);
+
+  React.useEffect(() => {
+    dispatch(startSetRates());
+  }, []);
+
+  React.useEffect(() => {
+    setCurrencies(store);
+  }, [store]);
+
+  return (
+    <AnimatedCard>
+      <StyledTitle>Currency converter</StyledTitle>
+      <StyledRow>
+        <CurrencySelector />
+        <AmountInput />
+      </StyledRow>
+      <StyledLayout>
+        {currencies.map(({ title, rate, icon }) => (
+          <div className="item">
+            <CurrencyCard type={title} rate={parseFloat(rate)} icon={icon} />
+          </div>
+        ))}
+      </StyledLayout>
+    </AnimatedCard>
+  );
+};

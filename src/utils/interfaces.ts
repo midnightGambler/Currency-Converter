@@ -7,3 +7,5 @@ export type currencyType =
   | "EUR"
   | "RUB"
   | "USD";
+
+export type currenciesType = { title: currencyType; rate: string; icon: any }[];

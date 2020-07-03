@@ -4,7 +4,7 @@ import {
   StyledExchangeIcon,
   StyledSmall,
   StyledReadonlyInput,
-  StyledCurrencyIcon
+  StyledCurrencyIcon,
 } from "./styles";
 import { CurrencyCardProps } from "./interfaces";
 import exchange from "../../svg/exchange.svg";
@@ -12,7 +12,7 @@ import exchange from "../../svg/exchange.svg";
 export const CurrencyCard: React.FC<CurrencyCardProps> = ({
   rate,
   type,
-  icon
+  icon,
 }) => {
   const inputRef = React.useRef(null);
 
@@ -45,7 +45,7 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
         onFocus={handleCopy}
         ref={inputRef}
         readOnly
-        value="15201"
+        value={rate}
         tabIndex={-1}
       />
     </StyledCard>

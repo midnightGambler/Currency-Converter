@@ -1,11 +1,23 @@
+const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const dotenv = require("dotenv");
+
+const env = dotenv.config().parsed;
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
   entry: "./src/index.tsx",
   devtool: "inline-source-map",
   resolve: {
     extensions: [".ts", ".tsx", ".js"]
+  },
+  node: {
+    fs: "empty"
   },
   output: {
     path: path.join(__dirname, "/docs"),
@@ -14,7 +26,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./template.html"
-    })
+    }),
+    new webpack.DefinePlugin(envKeys)
   ],
   module: {
     rules: [
