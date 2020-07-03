@@ -6,7 +6,7 @@ import { DefaultTheme } from "styled-components";
 //   bg: "#ffeb3b",
 //   bgDark: "#ffeb3b",
 //   primary: "#444",
-//   boxShadow: "5px 5px 10px #d4c331, -5px -5px 10px #ffff45;"
+//   boxShadow: "5px 5px 10px #d4c331, -5px -5px 10px #ffff45;",
 // };
 
 // white
@@ -15,14 +15,14 @@ import { DefaultTheme } from "styled-components";
 //   bg: "#d4d4d4",
 //   bgDark: "#c9c9c9",
 //   primary: "#444",
-//   boxShadow: "5px 5px 10px #b0b0b0, -5px -5px 10px #f8f8f8;"
+//   boxShadow: "5px 5px 10px #b0b0b0, -5px -5px 10px #f8f8f8;",
 // };
 
-// dark
+// // dark
 export const colors: DefaultTheme = {
   bgLight: "#545256",
   bg: "#4f4e51",
   bgDark: "#424244",
   primary: "#fdf173",
-  boxShadow: "8px 8px 16px #424244, -8px -8px 16px #5c5a5e"
+  boxShadow: "8px 8px 16px #424244, -8px -8px 16px #5c5a5e",
 };

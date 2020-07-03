@@ -4,10 +4,10 @@ import { Dropdown } from "../UI/Dropdown/Dropdown";
 import { DropdownMenu } from "../UI/Dropdown/DropdownMenu";
 import { DropdownItem } from "../UI/Dropdown/DropdownItem";
 import { Icon } from "../UI/Icon/Icon";
-import { options } from "../../fixtures/currencies/currencies";
 import { defaultStateType } from "../../store/reducers/currenciesReducer";
 import { currencyType } from "../../utils/interfaces";
 import { setSelectedCurrency } from "../../store/actions/currenciesActions";
+import { icons } from "../../utils/utils";
 
 export const CurrencySelector: React.FC = () => {
   const dispatch = useDispatch();
@@ -43,7 +43,13 @@ export const CurrencySelector: React.FC = () => {
 
   return (
     <Dropdown>
-      {options[selectedCurrency.toLowerCase()].icon}
+      <Icon
+        primary
+        glyph={icons[selectedCurrency].id}
+        viewBox={icons[selectedCurrency].viewBox}
+        width="24px"
+        height="24px"
+      />
       <DropdownMenu>{renderCurrencies()}</DropdownMenu>
     </Dropdown>
   );

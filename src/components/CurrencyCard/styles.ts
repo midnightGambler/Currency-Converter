@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { Icon } from "../UI/Icon/Icon";
 import { Card } from "../UI/Card";
-import { getCurrencySign } from "../../utils/utils";
 import { currencyType } from "../../utils/interfaces";
 import { animatedShadow } from "../../styles/animations";
 
