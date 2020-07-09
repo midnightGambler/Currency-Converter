@@ -16,16 +16,22 @@ import { defaultStateType } from "../../store/reducers/currenciesReducer";
 export const CurrencyConverter: React.FC = () => {
   const dispatch = useDispatch();
 
-  const { rates, selectedCurrency } = useSelector(
+  const { rates, selectedCurrency, value } = useSelector(
     (state: defaultStateType) => ({
       rates: state.rates,
       selectedCurrency: state.selectedCurrency,
+      value: state.value,
     })
   );
 
   React.useEffect(() => {
     dispatch(startSetRates(selectedCurrency));
   }, [selectedCurrency]);
+
+  const handleCopy = (ref: React.MutableRefObject<HTMLInputElement>) => {
+    ref.current.select();
+    document.execCommand("copy");
+  };
 
   return (
     <AnimatedCard>
@@ -37,7 +43,13 @@ export const CurrencyConverter: React.FC = () => {
       <StyledLayout>
         {rates.map(({ title, rate, icon }) => (
           <StyledLayoutItem key={title}>
-            <CurrencyCard type={title} rate={rate} icon={icon} />
+            <CurrencyCard
+              handleCopy={handleCopy}
+              value={value}
+              type={title}
+              rate={rate}
+              icon={icon}
+            />
           </StyledLayoutItem>
         ))}
       </StyledLayout>
