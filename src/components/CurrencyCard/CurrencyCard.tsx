@@ -8,18 +8,17 @@ import {
 } from "./styles";
 import { CurrencyCardProps } from "./interfaces";
 import exchange from "../../svg/exchange.svg";
+import { handleCopy, icons } from "../../utils/utils";
 
 export const CurrencyCard: React.FC<CurrencyCardProps> = ({
   rate,
-  type,
-  icon,
+  title,
   value,
-  handleCopy,
 }) => {
   const inputRef = React.useRef(null);
 
   return (
-    <StyledCard type={type}>
+    <StyledCard type={title}>
       <StyledSmall>
         <StyledExchangeIcon
           primary
@@ -29,10 +28,11 @@ export const CurrencyCard: React.FC<CurrencyCardProps> = ({
           height="12px"
         />
         {rate.toFixed(4)}
+
         <StyledCurrencyIcon
           primary
-          glyph={icon.id}
-          viewBox={icon.viewBox}
+          glyph={icons[title].id}
+          viewBox={icons[title].viewBox}
           width="32px"
           height="32px"
         />

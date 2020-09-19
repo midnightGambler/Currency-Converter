@@ -22,24 +22,25 @@ export const CurrencySelector: React.FC = () => {
     dispatch(setSelectedCurrency(currency));
   };
 
-  const renderCurrencies = () => {
-    return currencies
-      .filter(({ title }) => title !== selectedCurrency)
-      .map(({ title, icon }) => (
+  const renderCurrencies = () =>
+    currencies.reduce((acc, cur) => {
+      if (cur.title === selectedCurrency) return acc;
+      const dropdownItem = (
         <DropdownItem
-          key={title}
-          onClick={handleSelectCurrency.bind(null, title)}
+          key={cur.title}
+          onClick={handleSelectCurrency.bind(null, cur.title)}
         >
           <Icon
             primary
-            glyph={icon.id}
-            viewBox={icon.viewBox}
+            glyph={icons[cur.title].id}
+            viewBox={icons[cur.title].viewBox}
             width="24px"
             height="24px"
           />
         </DropdownItem>
-      ));
-  };
+      );
+      return [...acc, dropdownItem];
+    }, []);
 
   return (
     <Dropdown>

@@ -13,7 +13,6 @@ export type defaultStateType = {
   rates: {
     title: currencyType;
     rate: number;
-    icon: any;
   }[];
 };
 
@@ -24,22 +23,18 @@ const defaultState: defaultStateType = {
     {
       title: "USD",
       rate: 0,
-      icon: USD,
     },
     {
       title: "EUR",
       rate: 0,
-      icon: EUR,
     },
     {
       title: "GBP",
       rate: 0,
-      icon: GBP,
     },
     {
       title: "RUB",
       rate: 0,
-      icon: RUB,
     },
   ],
 };

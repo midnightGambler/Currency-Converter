@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { CurrencySelector } from "../CurrencySelector/CurrencySelector";
 import { AmountInput } from "../AmountInput/AmountInput";
 import {
@@ -10,8 +11,8 @@ import {
 } from "./styles";
 import { CurrencyCard } from "../CurrencyCard/CurrencyCard";
 import { startSetRates } from "../../store/actions/currenciesActions";
-import { useSelector, useDispatch } from "react-redux";
 import { defaultStateType } from "../../store/reducers/currenciesReducer";
+import { currencyObjType } from "../../utils/interfaces";
 
 export const CurrencyConverter: React.FC = () => {
   const dispatch = useDispatch();
@@ -28,10 +29,12 @@ export const CurrencyConverter: React.FC = () => {
     dispatch(startSetRates(selectedCurrency));
   }, [selectedCurrency]);
 
-  const handleCopy = (ref: React.MutableRefObject<HTMLInputElement>) => {
-    ref.current.select();
-    document.execCommand("copy");
-  };
+  const renderCurrencyCards = () =>
+    rates.map((rate: currencyObjType) => (
+      <StyledLayoutItem key={rate.title}>
+        <CurrencyCard value={value} {...rate} />
+      </StyledLayoutItem>
+    ));
 
   return (
     <AnimatedCard>
@@ -40,19 +43,7 @@ export const CurrencyConverter: React.FC = () => {
         <CurrencySelector />
         <AmountInput />
       </StyledRow>
-      <StyledLayout>
-        {rates.map(({ title, rate, icon }) => (
-          <StyledLayoutItem key={title}>
-            <CurrencyCard
-              handleCopy={handleCopy}
-              value={value}
-              type={title}
-              rate={rate}
-              icon={icon}
-            />
-          </StyledLayoutItem>
-        ))}
-      </StyledLayout>
+      <StyledLayout>{renderCurrencyCards()}</StyledLayout>
     </AnimatedCard>
   );
 };

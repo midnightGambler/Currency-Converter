@@ -29,8 +29,11 @@ export const icons: any = {
 };
 
 export const handleErrors = (response: Response) => {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
+  if (!response.ok) throw Error(response.statusText);
   return response.json();
+};
+
+export const handleCopy = (ref: React.MutableRefObject<HTMLInputElement>) => {
+  ref.current.select();
+  document.execCommand("copy");
 };
